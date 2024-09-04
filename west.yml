@@ -23,6 +23,8 @@ manifest:
       url-base: https://github.com/zephyrproject-rtos
     - name: babblesim
       url-base: https://github.com/BabbleSim
+    - name: km
+      url-base: https://github.com/kickmaker 
 
   group-filter: [-babblesim, -optional]
 
@@ -272,6 +274,10 @@ manifest:
       path: modules/hal/xtensa
       groups:
         - hal
+    - name: heatshrink
+      remote: km
+      revision: zephyr
+      path: modules/lib/heatshrink
     - name: hostap
       path: modules/lib/hostap
       revision: e83c94958cab8e2327c85e484f50cbf570f5ac3f
