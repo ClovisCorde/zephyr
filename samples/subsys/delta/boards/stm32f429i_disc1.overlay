@@ -1,0 +1,41 @@
+/ {
+    chosen { 
+        zephyr,code-partition = &slot0_partition; 
+    };
+};
+
+&flash0 {
+    /delete-node/ partitions;
+    
+    partitions {
+        compatible = "fixed-partitions";
+        #address-cells = <1>;
+        #size-cells = <1>;
+
+        boot_partition: partition@0 { 
+            label = "mcuboot"; 
+            reg = <0x0 DT_SIZE_K(128)>; 
+            read-only; 
+        };
+        
+        slot0_partition: partition@20000 { 
+            label = "image-0"; 
+            reg = <0x20000 DT_SIZE_K(768)>; 
+        };
+        
+        slot1_partition: partition@e0000 {
+            label = "image-1"; 
+            reg = <0xe0000 DT_SIZE_K(768)>; 
+        };
+        
+        patch_partition: partition@1a0000 {
+            label = "delta-patch"; 
+            reg = <0x1a0000 DT_SIZE_K(128)>; 
+        };
+        
+        storage_partition: partition@1c0000 { 
+            label = "storage"; 
+            reg = <0x1c0000 DT_SIZE_K(128)>; 
+        };
+    };
+};
